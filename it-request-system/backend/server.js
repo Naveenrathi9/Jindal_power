@@ -25,13 +25,13 @@ const authMiddleware = require('./middleware/authMiddleware');
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
-app.get('/index.html', authMiddleware, (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/login.html'));
 });
 
-app.get("/", (req, res) => {
-  console.log("Health check hit");
-  res.json({ message: "server is running.." });
-});
+// Optionally remove or comment out the /index.html route if not needed
+// app.get('/index.html', authMiddleware, (req, res) => {
+//   res.sendFile(path.join(__dirname, '../frontend/index.html'));
+// });
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

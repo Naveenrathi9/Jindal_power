@@ -20,11 +20,13 @@ const authRoutes = require("./routes/authRoutes");
 app.use("/api", requestRoutes);
 app.use("/api", authRoutes);
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/login.html'));
+  
 const path = require('path');
 const authMiddleware = require('./middleware/authMiddleware');
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/login.html'));
+
 });
 
 app.use(express.static(path.join(__dirname, '../frontend')));

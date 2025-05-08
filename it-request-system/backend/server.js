@@ -23,11 +23,11 @@ app.use("/api", authRoutes);
 const path = require('path');
 const authMiddleware = require('./middleware/authMiddleware');
 
-app.use(express.static(path.join(__dirname, '../frontend')));
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/login.html'));
 });
+
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Optionally remove or comment out the /index.html route if not needed
 // app.get('/index.html', authMiddleware, (req, res) => {
